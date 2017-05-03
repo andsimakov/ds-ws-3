@@ -1,0 +1,14 @@
+---
+- hosts: all
+  strategy: free
+  become_user: root
+  become: yes
+  gather_facts: yes
+  tags: ['setup']
+  roles:
+    - { role: letsencrypt, task: init }
+    - { role: haproxy, task: setup }
+    - { role: haproxy, task: dirs }
+    - { role: docker, task: setup }
+    - { role: letsencrypt, task: setup }
+    - { role: letsencrypt, task: renew }

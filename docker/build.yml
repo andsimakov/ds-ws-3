@@ -1,0 +1,13 @@
+version: '2'
+services:
+  chat_django:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-python:${PROJECT_VERSION}
+    build:
+      context: ..
+      dockerfile: ./docker/images/chat-django/Dockerfile
+  chat_postgres:
+    build: ./images/chat-postgres
+  chat_nginx:
+    build:
+      context: ..
+      dockerfile: ./docker/images/chat-nginx/Dockerfile

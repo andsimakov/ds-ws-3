@@ -1,0 +1,3 @@
+---
+- include: registry-setup.yml
+- include: registry-deploy.yml

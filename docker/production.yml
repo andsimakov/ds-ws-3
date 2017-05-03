@@ -1,0 +1,11 @@
+version: '2'
+volumes:
+  chat_django_media: {}
+services:
+  chat_django:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-django:${PROJECT_VERSION}
+    volumes:
+      - chat_django_media:/code/public/media
+  chat_nginx:
+    ports:
+      - '127.0.0.1:8001:80'

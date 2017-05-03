@@ -1,0 +1,34 @@
+home_dir: ""
+
+jenkins_user: "root"
+jenkins_ip: "127.0.0.1"
+jenkins_port: "8001"
+jenkins_image: "jenkinsci/jenkins:latest"
+jenkins_user_dir: "{{ home_dir }}/{{ jenkins_user }}"
+jenkins_configs_dir: "{{ jenkins_user_dir }}/configs"
+
+jenkins_project_name: "jenkins"
+
+jenkins_docker_compose_dir: "{{ jenkins_configs_dir }}/{{ jenkins_project_name }}"
+jenkins_docker_compose_file: "{{ jenkins_docker_compose_dir }}/docker-compose.yml"
+
+jenkins_dirs:
+  - "{{ jenkins_configs_dir }}"
+  - "{{ jenkins_docker_compose_dir }}"
+
+jenkins_docker:
+  project_name: "{{ jenkins_project_name }}"
+  definition:
+    version: '2'
+    volumes:
+      jenkins_data: {}
+    services:
+      jenkins:
+        restart: always
+        image: "{{ jenkins_image }}"
+        volumes:
+          - "jenkins_data:/var/jenkins_home"
+          - "/var/run/docker.sock:/var/run/docker.sock"
+          - "/usr/bin/docker:/usr/bin/docker"
+        ports:
+          - "{{ jenkins_ip }}:{{ jenkins_port }}:8080"

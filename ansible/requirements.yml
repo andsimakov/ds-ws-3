@@ -1,0 +1,14 @@
+# Alternative src https://github.com/haos616/ansible-docker
+- src: haos616.docker
+  version: "0.4.3"
+  name: "docker"
+
+# Alternative src https://github.com/haos616/ansible-haproxy
+- src: haos616.haproxy
+  version: "0.1.5"
+  name: "haproxy"
+
+# Alternative src https://github.com/haos616/ansible-haproxy-letsencrypt
+- src: haos616.haproxy-letsencrypt
+  version: "0.1.1"
+  name: "letsencrypt"

@@ -1,0 +1,9 @@
+version: '2'
+services:
+  ansible:
+    image: haos616/ansible:2.3.0.0
+    working_dir: /ansible
+    volumes:
+      - .:/ansible
+      - ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa

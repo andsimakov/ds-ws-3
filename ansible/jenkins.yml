@@ -1,0 +1,3 @@
+---
+- include: jenkins-setup.yml
+- include: jenkins-deploy.yml

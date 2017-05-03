@@ -1,0 +1,13 @@
+{
+    "terraform_dir": "terraform",
+    "terraform_version": "0.9.4",
+    "digitalocean_region": "fra1",
+    "digitalocean_image": "debian-8-x64",
+    "base_domain": "example.com",
+
+    "production_domain": "{{ cookiecutter.base_domain.lower() }}",
+    "staging_domain": "staging.{{ cookiecutter.base_domain.lower() }}",
+    "development_domain": "dev.{{ cookiecutter.base_domain.lower() }}",
+    "jenkins_domain": "jenkins.{{ cookiecutter.base_domain.lower() }}",
+    "registry_domain": "hub.{{ cookiecutter.base_domain.lower() }}"
+}

@@ -1,0 +1,3 @@
+haproxy_config_template: "{{ playbook_dir }}/roles/letsencrypt/templates/haproxy.cfg.j2"
+
+letsencrypt_admin_email: 'haos616@gmail.com'

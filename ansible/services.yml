@@ -1,0 +1,4 @@
+---
+- include: python.yml
+- include: services-setup.yml
+- include: services-deploy.yml

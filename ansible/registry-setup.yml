@@ -1,0 +1,8 @@
+---
+- hosts: registry
+  become_user: root
+  become: yes
+  gather_facts: yes
+  tags: ['setup']
+  roles:
+    - { role: registry, task: setup }

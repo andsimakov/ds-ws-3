@@ -1,0 +1,14 @@
+version: '2'
+services:
+  chat_django_sshd:
+    image: haos616/sshd:latest
+    privileged: true
+    pid: host
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    environment:
+      - DOCKER_CONTAINER=${COMPOSE_PROJECT_NAME}_chat_django_1
+    ports:
+      - '127.0.0.1:22963:22'
+    depends_on:
+      - chat_django

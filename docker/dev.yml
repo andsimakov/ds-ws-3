@@ -1,0 +1,20 @@
+version: '2'
+services:
+  chat_django:
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - '../chat:/code'
+    env_file:
+      - ./envs/common.dev.env
+      - ./envs/chat/common.dev.env
+      - ./envs/chat/django.dev.env
+    ports:
+      - '127.0.0.1:8000:8000'
+  chat_postgres:
+    env_file:
+      - ./envs/chat/postgres.dev.env
+  chat_nginx:
+    env_file:
+      - ./envs/chat/nginx.dev.env
+    ports:
+      - '127.0.0.1:80:80'

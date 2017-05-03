@@ -1,0 +1,6 @@
+- name: Add user {{ registry_user }}
+  user: name="{{ registry_user }}" shell=/bin/bash
+
+- name: Creates directories
+  file: path="{{ item }}" owner="{{ registry_user }}" group="{{ registry_user }}" state=directory
+  with_items: "{{ registry_dirs }}"

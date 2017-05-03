@@ -1,0 +1,6 @@
+- name: Generate
+  template: src="docker-compose.yml.j2" dest="{{ registry_docker_compose_file }}"
+
+- docker_service:
+    project_name: "{{ registry_docker.project_name }}"
+    definition: "{{ registry_docker.definition }}"

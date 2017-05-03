@@ -1,0 +1,32 @@
+home_dir: ""
+
+registry_user: "root"
+registry_ip: "127.0.0.1"
+registry_port: "8001"
+registry_image: "registry:2.6.1"
+registry_user_dir: "{{ home_dir }}/{{ registry_user }}"
+registry_configs_dir: "{{ registry_user_dir }}/configs"
+
+registry_project_name: "registry"
+
+registry_docker_compose_dir: "{{ registry_configs_dir }}/{{ registry_project_name }}"
+registry_docker_compose_file: "{{ registry_docker_compose_dir }}/docker-compose.yml"
+
+registry_dirs:
+  - "{{ registry_configs_dir }}"
+  - "{{ registry_docker_compose_dir }}"
+
+registry_docker:
+  project_name: "{{ registry_project_name }}"
+  definition:
+    version: '2'
+    volumes:
+      registry_data: {}
+    services:
+      registry:
+        restart: always
+        image: "{{ registry_image }}"
+        volumes:
+          - "registry_data:/var/registry_home"
+        ports:
+          - "{{ registry_ip }}:{{ registry_port }}:5000"

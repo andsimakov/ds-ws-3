@@ -1,0 +1,13 @@
+version: '2'
+services:
+  chat_django:
+    command: python manage.py collectstatic --noinput
+    env_file:
+      - ./envs/chat/django.image.env
+    volumes:
+      - '../chat:/code'
+  chat_django_build:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-django:${PROJECT_VERSION}
+    build:
+      context: ..
+      dockerfile: ./docker/images/chat-django/Dockerfile.build

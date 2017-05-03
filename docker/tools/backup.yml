@@ -1,0 +1,14 @@
+version: '2'
+networks:
+  default:
+    external:
+      name: ${COMPOSE_PROJECT_NAME}_default
+services:
+  chat_postgres_backup:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-postgres:${PROJECT_VERSION}
+    command: backup
+    env_file:
+      - ./envs/chat/postgres.env
+    environment:
+      - POSTGRES_HOST=chat_postgres
+    entrypoint: /scripts/docker-entrypoint.sh

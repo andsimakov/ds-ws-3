@@ -1,0 +1,8 @@
+version: '2'
+services:
+  terraform:
+    image: hashicorp/terraform:{{ cookiecutter.terraform_version }}
+    working_dir: /source/terraform
+    volumes:
+      - ..:/source
+      - ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub

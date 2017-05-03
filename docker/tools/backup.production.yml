@@ -1,0 +1,7 @@
+version: '2'
+volumes:
+  chat_postgres_backups: {}
+services:
+  chat_postgres_backup:
+    volumes:
+      - chat_postgres_backups:/backups

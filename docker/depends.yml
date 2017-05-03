@@ -1,0 +1,9 @@
+version: '2'
+services:
+  chat_django:
+    depends_on:
+      - chat_postgres
+      - chat_redis
+  chat_nginx:
+    depends_on:
+      - chat_django

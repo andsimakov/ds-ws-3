@@ -1,0 +1,6 @@
+- name: Generate
+  template: src="docker-compose.yml.j2" dest="{{ jenkins_docker_compose_file }}"
+
+- docker_service:
+    project_name: "{{ jenkins_docker.project_name }}"
+    definition: "{{ jenkins_docker.definition }}"

@@ -1,0 +1,20 @@
+version: '2'
+volumes:
+  chat_postgres_data: {}
+  chat_redis_data: {}
+services:
+  chat_django:
+    env_file:
+      - ./envs/chat/common.env
+      - ./envs/chat/django.env
+  chat_postgres:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-postgres:${PROJECT_VERSION}
+    volumes:
+      - chat_postgres_data:/var/lib/postgresql/data
+  chat_redis:
+    image: redis:3.2.4
+    volumes:
+      - chat_redis_data:/data
+  chat_nginx:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-nginx:${PROJECT_VERSION}
+

@@ -1,0 +1,8 @@
+---
+- hosts: jenkins
+  become_user: root
+  become: yes
+  gather_facts: yes
+  tags: ['setup']
+  roles:
+    - { role: jenkins, task: setup }

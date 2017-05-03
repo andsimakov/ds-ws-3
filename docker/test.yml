@@ -1,0 +1,7 @@
+version: '2'
+services:
+  chat_django:
+    image: ${HUB_HOST}/${PROJECT_NAME}/chat-django:${PROJECT_VERSION}
+    command: python manage.py test --parallel
+    env_file:
+      - ./envs/chat/django.test.env
